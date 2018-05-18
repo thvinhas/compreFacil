@@ -14,7 +14,9 @@
 <body>
 	<div class="container">
 		<div class="omb_login">
-			<h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
+			<h3 class="omb_authTitle">Login or
+				<button type="button" class="btn btn-link" data-toggle="modal" data-target="#ModalSignUp">Sign up</button>
+			</h3>
 			<div class="row omb_row-sm-offset-3 omb_socialButtons">
 				<div class="col-xs-4 col-sm-2">
 					<button class="btn btn-lg btn-block omb_btn-facebook">
@@ -71,6 +73,73 @@
 			</div>	    	
 		</div>
 	</div>
+
+<!--Modal Sing-Up-->
+<div id="ModalSignUp" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+  
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <h4 class="modal-title">Sign Up</h4>
+		</div>
+
+		<div class="modal-body">
+		        <form id="formLogin">
+						
+						<div class="form-group">
+						  <label for="nome">Nome</label>
+						  <input autofocus type="text" id="nome" class="form-control" required>
+						</div>
+				
+						<div class="form-group">
+						  <label for="telefone">Telefone</label>
+						  <input type="tel" id="telefone" class="form-control" required>
+						</div>
+				
+						<div class="form-group">
+						  <label for="email">E-Mail</label>
+						  <input type="email" id="email" class="form-control" required>
+						</div>
+				
+						<div class="form-group">
+							<label for="endereco">Endereço</label>
+							<input type="endereco" id="endereco" class="form-control" required>
+						</div>
+
+						<div class="form-group">
+							<label for="cep">CEP</label>
+							<input type="cep" id="cep" class="form-control" required>
+						</div>
+
+						<div class="form-group">
+							<label for="senha">Senha</label>
+							<input type="senha" id="senha" class="form-control" required>
+						</div>
+
+						<div class="form-group">
+							<label for="senhaCon">Confirmar Senha</label>
+							<input type="senhaCon" id="senhaCon" class="form-control" required>
+						</div>
+				
+					  
+		</div>
+
+		<div class="modal-footer">
+				<div class="form-group">
+						<a href="index.html" class="btn btn-default">Cancelar</a>
+						<button type="button" onclick="cadastre_se()" class="btn btn-primary">Sign Up</button>
+				</div>
+				</form>
+		</div>
+	  </div>
+  
+	</div>
+  </div>
+  <!--Modal Sing-Up end-->
+
 </body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
