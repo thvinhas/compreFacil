@@ -13,10 +13,10 @@ function exibirTodosProdutos() {
                     html +="<div class=\"col-lg-4 col-md-6 mb-4\">" +
                     			"<a onclick='exibirProduto(" + loja.key + "," + produto.key + ")'>"+
                         			"<div class=\"card h-100\">" +
-                        				"<img class=\"card-img-top\" src=\"http://placehold.it/700x400\" alt=\"\">" +
+                        				"<img class=\"card-img-top\" src=\""+produto.val().urlImagem+"\" alt=\"\">" +
                    						"<div class=\"card-body\">" +
                     						"<h4 class=\"card-title\">"+ produto.val().nome + "</h4>" +
-                    						"<h5>$24.99</h5>" +
+                    						"<h5>"+produto.val().preco+",00</h5>" +
                     						"<p class=\"card-text\">"+produto.val().descricao+"</p>" +
                     					"</div>" +
                         			"</div>" +
