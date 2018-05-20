@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 
 
@@ -47,27 +47,27 @@
 
 			<div class="row omb_row-sm-offset-3">
 				<div class="col-xs-12 col-sm-6">	
-					<form class="omb_loginForm" action="" autocomplete="off" method="POST">
+					<form id="formLogin" class="omb_loginForm" action="" autocomplete="off" method="POST">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" class="form-control" name="username" placeholder="email address">
+							<input id="emailLogin" type="email" class="form-control" name="username" placeholder="email address">
 						</div>
 						<span class="help-block"></span>
 
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input  type="password" class="form-control" name="password" placeholder="Password">
+							<input id="senhaLogin"  type="password" class="form-control" name="password" placeholder="Password">
 						</div>
 						<span class="help-block"></span>
 
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+						<button onclick="logar()" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
 					</form>
 				</div>
 			</div>
 			<div class="row omb_row-sm-offset-3">
 				<div class="col-xs-12 col-sm-3">
 					<p class="omb_forgotPwd">
-						<a href="#">Forgot password?</a>
+						<!--<a href="#">Forgot password?</a>-->
 					</p>
 				</div>
 			</div>	    	
@@ -87,41 +87,41 @@
 		</div>
 
 		<div class="modal-body">
-		        <form id="formLogin">
+		        <form id="formCad">
 						
-						<div class="form-group">
+						<!--<div class="form-group">
 						  <label for="nome">Nome</label>
 						  <input autofocus type="text" id="nome" class="form-control" required>
 						</div>
 				
 						<div class="form-group">
 						  <label for="telefone">Telefone</label>
-						  <input type="tel" id="telefone" class="form-control" required>
-						</div>
+						  <input type="text" id="telefone" class="form-control" required>
+						</div>-->
 				
 						<div class="form-group">
 						  <label for="email">E-Mail</label>
 						  <input type="email" id="email" class="form-control" required>
 						</div>
-				
+						<!--
 						<div class="form-group">
 							<label for="endereco">Endereço</label>
-							<input type="endereco" id="endereco" class="form-control" required>
+							<input type="text" id="endereco" class="form-control" required>
 						</div>
 
 						<div class="form-group">
 							<label for="cep">CEP</label>
-							<input type="cep" id="cep" class="form-control" required>
-						</div>
+							<input type="text" id="cep" class="form-control" required>
+						</div> -->
 
 						<div class="form-group">
 							<label for="senha">Senha</label>
-							<input type="senha" id="senha" class="form-control" required>
+							<input type="password" id="senha" class="form-control" required>
 						</div>
 
 						<div class="form-group">
 							<label for="senhaCon">Confirmar Senha</label>
-							<input type="senhaCon" id="senhaCon" class="form-control" required>
+							<input type="password" id="senhaCon" class="form-control" required>
 						</div>
 				
 					  
@@ -141,10 +141,9 @@
   <!--Modal Sing-Up end-->
 
 </body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 <script src="vendor/js/firebase.js"></script>
-<script src="vendor/js/login.js"></script>
 
 </html>
