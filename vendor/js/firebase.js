@@ -10,13 +10,10 @@
   };
   firebase.initializeApp(config);
 
+  //CADASTRAR USUARIO
   function cadastre_se() {
     
-      //var nome = $("#nome").val();
-      //var telefone = $("#telefone"); 
       var email = $("#email").val();
-      //var endereco = $("#endereco").val();
-      //var cep = $("#cep").val();
       var senha = $("#senha").val();
       var senhaCon = $("#senhaCon").val();
 
@@ -47,7 +44,8 @@
           
 
     }
-    
+
+    //LOGAR COM EMAIL
     function logar() {
     
       var email = $("#emailLogin").val();
@@ -70,6 +68,7 @@
     
     }
     
+    //LOGAR COM CONTA GOOGLE
     function logarComGoogle() {
     
       var provedor = new firebase.auth.GoogleAuthProvider();
@@ -79,11 +78,11 @@
     
           localStorage.setItem("user_id", result.user.uid);
           localStorage.setItem("user_email", result.user.email);
-    
           location.href = "compra.html";
     
         })
         .catch(function(error){
+         
     
           console.log(error.message);
           alert("Erro na Autenticação com o Google");
@@ -92,6 +91,7 @@
     
     }
     
+    //SAIR DO SISTEMA
     function logoff() {
     
       firebase.auth().signOut();
@@ -102,3 +102,56 @@
     
     }
 
+//OBTER INFORMAÇÕES DO CLIENTE
+function obterCliente() {
+
+  var uId = localStorage.getItem("user_id");
+  
+      firebase.database().ref("cliente/"+uId)
+      .once("value", function(client){
+    
+        $("#nome").val( client.val().nome );     
+        $("#telefone").val( client.val().telefone );
+        $("#endereco").val( client.val().endereco );
+        $("#cep").val( client.val().cep );
+    
+      });
+
+}
+
+// INSERIR/ATUALIZAR INFORMAÇÕES DO CLIENTE
+function infoCliente() {
+
+    var uId = localStorage.getItem("user_id");
+
+    var nome = $("#nome").val();
+    var telefone = $("#telefone");
+    var endereco = $("#endereco").val();
+    var cep = $("#cep").val();
+    var email = localStorage.getItem("user_email");
+
+    var client = {
+      nome: nome,
+      telefone: telefone,
+      endereco: endereco,
+      cep: cep,
+      email: email
+    };
+  
+    firebase.database().ref("cliente/"+uId).set(client)
+    .then(function(result){
+  
+      alert("Cadastrado com Sucesso!");
+      $('#ModalCliente').modal('hide');
+  
+    })
+    .catch(function(error){
+  
+      alert("Erro ao cadastrar");
+      console.log(error.message);
+  
+    });
+  
+  }
+
+ 

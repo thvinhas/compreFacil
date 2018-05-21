@@ -30,19 +30,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <!-- <li class="nav-item active">
               <a class="nav-link" href="#">Home
                 <span class="sr-only">(current)</span>
-              </a>
+              </a>-->
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <button type="button" onclick="obterCliente()" class="btn btn-link" data-toggle="modal" data-target="#ModalCliente">Informações Pessoais</button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="carrinhoCompra.html">Carrinho de Compras</a>
+              <button type="button" class="btn btn-link" onclick="location.href='carrinhoCompra.html'">Minhas Compras</button>              
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html" onclick="logoff()">Sair</a>
+                <button type="button" class="btn btn-link" onclick="logoff()">Sair</button>
             </li>
           </ul>
         </div>
@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="row my-4">
-                    <h1>Carrinho de compras</h1>
+                    <h1>Minhas Compras</h1>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -100,10 +100,61 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Compre Fácil 2018</p>
       </div>
       <!-- /.container -->
     </footer>
+
+    <!--Modal cliente-->
+<div id="ModalCliente" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+  
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		
+		<div class="modal-header">
+        <h4 class="modal-title">Informações Pessoais</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button> 
+		</div>
+
+		<div class="modal-body">
+		        <form id="formCliente">
+						
+						<div class="form-group">
+						  <label for="nome">Nome</label>
+						  <input autofocus type="text" id="nome" class="form-control" required>
+						</div>
+				
+						<div class="form-group">
+						  <label for="telefone">Telefone</label>
+						  <input type="text" id="telefone" class="form-control" required>
+						</div>
+				
+						
+						<div class="form-group">
+							<label for="endereco">Endereço</label>
+							<input type="text" id="endereco" class="form-control" required>
+						</div>
+
+						<div class="form-group">
+							<label for="cep">CEP</label>
+							<input type="text" id="cep" class="form-control" required>
+						</div>
+					  
+		</div>
+
+		<div class="modal-footer">
+				<div class="form-group">
+						<a href="carrinhoCompra.html" class="btn btn-default">Cancelar</a>
+						<button type="button" onclick="infoCliente()" class="btn btn-primary">Salvar</button>
+				</div>
+				</form>
+		</div>
+	  </div>
+  
+	</div>
+  </div>
+  <!--Modal cliente end-->
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

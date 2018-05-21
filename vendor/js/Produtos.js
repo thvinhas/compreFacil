@@ -10,26 +10,35 @@ function exibirTodosProdutos() {
                 let produtos = loja.child('produtos');
                 produtos.forEach(function (produto) {
 
-                    html +="<div class=\"col-lg-4 col-md-6 mb-4\">" +
-                    			"<a onclick='exibirProduto(" + loja.key + "," + produto.key + ")'>"+
+                    html +=""+
+                            "<div class=\"col-lg-4 col-md-6 mb-4\">" +
+                    			"<a href=\"produto.html?produtoId="+produto.key+"&lojaId="+loja.key+"\" onclick='exibirProduto()'>"+
                         			"<div class=\"card h-100\">" +
                         				"<img class=\"card-img-top\" src=\""+produto.val().urlImagem+"\" alt=\"\">" +
                    						"<div class=\"card-body\">" +
                     						"<h4 class=\"card-title\">"+ produto.val().nome + "</h4>" +
                     						"<h5>"+produto.val().preco+",00</h5>" +
                     						"<p class=\"card-text\">"+produto.val().descricao+"</p>" +
-                    					"</div>" +
+                                        "</div>" +
+                                       
                         			"</div>" +
-                    			"</a>" +
-                			"</div>";
+                                "</a>"+
+                                "" +
+                            "</div>"+
+                            "";                        
+
                 });
             });
             $('.produtos').html(html);
         });
 }
 
-function exibirProduto(lojaId, produtoId) {
-    localStorage.setItem("lojaId", lojaId);
-    localStorage.setItem("produtoId", produtoId);
-    location.href = "exibirProduto.html"
-}
+
+
+
+
+    
+
+
+
+
