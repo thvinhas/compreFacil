@@ -24,27 +24,52 @@ function verProds(){
             "<h1 class=\"my-4\">"+nome+"</h1>"+
         "</div>"+
         "</div>"+
-  
+
         "<div class=\"row\">"+
-        
+
                 "<div class=\"col-lg-4\">"+
                 "<img class=\"card-img-top\" src=\""+imagem+"\" alt=\"\">"+
                 "</div>"+
-        
+
                 "<div class=\"col-lg-8\" >"+
-                    "<b>Preço:</b> "+preco+",00<br><br>"+
-                    "<b>Quantidade em estoque:</b> "+quantidade+"<br><br>"+
-                "<hr>"+
-                    "<b>Descrição:</b> "+descricao+"<br><br>"+ 
-                "<hr>"+
-                   
-        
+                    "<form method='post' target='pagseguro' action='https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html'>"+
+
+                        "<input name='receiverEmail' value='suporte@lojamodelo.com.br' type='hidden'>"+
+                        "<input name='currency' value='BRL' type='hidden'>"+
+                        "<b>Preço:</b> "+preco+",00<br><br>"+
+                        "<b>Quantidade:</b><input type='number' name='itemQuantity1'  value='1' min='1' max='"+parseInt(quantidade.replace(/\D/g, ''))+"'><br><br>"+
+                        "<hr>"+
+                            "<b>Descrição:</b> "+descricao+"<br><br>"+
+                        "<hr>"+
+
+                        "<input name='itemId1' value='0001' type='hidden'>"+
+                        "<input name='itemDescription1' value='" + nome + "' type='hidden'>"+
+                        "<input name='itemAmount1' value='"+parseInt(preco.match(/\d+/)[0]).toFixed(2)+"' type='hidden'>"+
+                        "<input name='itemWeight1' value='1000' type='hidden'>"+
+
+                        "<input name='shippingType' value='3' type='hidden'>"+
+                        "<input name='shippingAddressPostalCode' value='01452002' type='hidden'>"+
+                        "<input name='shippingAddressStreet' value='Av. Brig. Faria Lima' type='hidden'>"+
+                        "<input name='shippingAddressNumber' value='1384' type='hidden'>"+
+                        "<input name='shippingAddressComplement' value='5o andar' type='hidden'>"+
+                        "<input name='shippingAddressDistric' value='Jardim Paulistano' type='hidden'>"+
+                        "<input name='shippingAddressCity' value='Sao Paulo' type='hidden'>"+
+                        "<input name='shippingAddressState' value='SP' type='hidden'>"+
+                        "<input name='shippingAddressCountry' value='BRA' type='hidden'>"+
+
+                        "<input name='senderName' value='José Comprador' type='hidden'>"+
+                        "<input name='senderAreaCode' value='11' type='hidden'>"+
+                        "<input name='senderPhone' value='56273440' type='hidden'>"+
+                        "<input name='senderEmail' value='c{93842340}@sandbox.pagseguro.com.br' type='hidden'>"+
+
+                        " <input alt='Pague com PagSeguro' name='submit'  type='image' src='https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif'/>"+
+                    "</form>"+
                 "</div>"+
-        
+
               "</div>";
 
           $('#detalheProduto').html(html2);
-        
+
 
       });
 
@@ -66,11 +91,11 @@ function obterLoja(){
         "<b>Nome:</b> "+nome+", <b>Telefone:</b> "+telefone+", <b>CEP:</b> "+cep+"<br>"+
         "<b>Endereço:</b> "+endereco+"<br>"+
         "<b>Email:</b> "+email+"<br><br><br>";
-    
+
         $('#detalheLoja').html(html);
 
     });
 
-    
+
 }
 

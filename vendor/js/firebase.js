@@ -30,7 +30,7 @@
       
       firebase.auth().createUserWithEmailAndPassword(email, senha)
         .then(function(user){
-          
+
           alert('Usuário criado com sucesso!');
           $('#formCad').trigger('reset');    
     
@@ -75,8 +75,7 @@
     
       firebase.auth().signInWithPopup(provedor)
         .then(function(result){
-    
-          localStorage.setItem("user_id", result.user.uid);
+            localStorage.setItem("user_id", result.user.uid);
           localStorage.setItem("user_email", result.user.email);
           location.href = "compra.html";
     
