@@ -17,3 +17,56 @@ body {
 .invisivel{ 
 	display: none;
 }
+
+#logo {
+    font-family: 'IM Fell French Canon SC', serif;
+    color: black;
+}
+
+#logo img {
+    width: 53px;
+}
+
+#user {
+    text-align: center;font-size: 26px;
+}
+
+.navbar {
+    color: black;
+}
+
+.minha-conta {
+    margin-left: 12%;
+}
+
+.sair {
+    margin-left: 32%;
+}
+
+.list-group-item {
+    padding: 0;
+    border: none;
+}
+
+#prods a {
+    color: black;
+}
+
+#prods a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+#prods .card-text {
+    color: #5a6268;
+}
+
+#prods .card-img-top {
+    width: 223px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.qtd {
+    width: 69px;
+}

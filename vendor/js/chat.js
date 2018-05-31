@@ -25,29 +25,35 @@ function exibirChat(chatKey) {
 
     var htmlchat = "";
     var htmlTituloChat = "";
+    var nomeLoja = "";
+    var nomeCliente = "";
     firebase.database().ref("chat/"+chatKey)
         .once("value", function (chat) {
+            nomeLoja = chat.val().nome_loja;
+            nomeCliente = chat.val().nome_cliente;
             htmlTituloChat += "<div class='chat-about'>" +
-                "<div class='chat-with'>Chat with Vincent Porter</div>" +
+                "<div class='chat-with'>Chat com "+ nomeLoja+"</div>" +
                 "</div>"
             $(".chat-header").html(htmlTituloChat);
+
         });
 
     firebase.database().ref("chat/"+chatKey+"/mensagem")
         .on("value", function (mensagens) {
+            htmlchat = "";
             mensagens.forEach(function (mensagem) {
                 if (mensagem.val().enviado == "cliente") {
                     htmlchat += "<li class='clearfix'>" +
                         "<div class='message-data align-right'>" +
-                        "<span class='message-data-time'>mensagem.val().hora</span> &nbsp; &nbsp;" +
-                        "<span class='message-data-name'>Olia</span> <i class='fa fa-circle me'></i>" +
+                        "<span class='message-data-time'>"+mensagem.val().hora+"</span> &nbsp; &nbsp;" +
+                        "<span class='message-data-name'>"+ nomeCliente +"</span> <i class='fa fa-circle me'></i>" +
                         "</div>" +
                         "<div class='message other-message float-right'>" + mensagem.val().mensagem +"</div>" +
                         "</li>"
                 } else {
                     htmlchat+="<li>" +
                         "<div class='message-data'>" +
-                        "<span class='message-data-name'><i class='fa fa-circle online'></i> Vincent</span>" +
+                        "<span class='message-data-name'><i class='fa fa-circle online'></i> "+ nomeLoja + "</span>" +
                         "<span class='message-data-time'>"+ mensagem.val().hora+"</span>" +
                         "</div>" +
                         "<div class='message my-message'>" + mensagem.val().mensagem+"</div>" +

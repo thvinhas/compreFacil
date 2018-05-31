@@ -56,6 +56,7 @@
     
         localStorage.setItem("user_id", user.uid);
         localStorage.setItem("user_email", user.email);
+          localStorage.setItem("user_raio", user.raio);
         location.href = "compra.html";
 
       })
@@ -77,6 +78,7 @@
         .then(function(result){
             localStorage.setItem("user_id", result.user.uid);
           localStorage.setItem("user_email", result.user.email);
+          localStorage.setItem("user_raio", result.user.raio);
           location.href = "compra.html";
     
         })
@@ -97,6 +99,7 @@
     
       localStorage.removeItem("user_id");
       localStorage.removeItem("user_email");    
+      localStorage.removeItem("user_raio");
       location.href = "index.html";
     
     }
@@ -113,10 +116,26 @@ function obterCliente() {
         $("#telefone").val( client.val().telefone );
         $("#endereco").val( client.val().endereco );
         $("#cep").val( client.val().cep );
-    
+        $("#raio").val( client.val().raio );
+
       });
 
 }
+
+  function obternomeCliente() {
+
+      var uId = localStorage.getItem("user_id");
+
+      firebase.database().ref("cliente/" + uId)
+          .once("value", function (client) {
+
+              var strg = client.val().nome;
+              var word_one = strg.split(' ')[0];
+
+              $("#nome-user").html("Olá, "  + word_one + "! ");
+
+          });
+  }
 
 // INSERIR/ATUALIZAR INFORMAÇÕES DO CLIENTE
 function infoCliente() {
@@ -124,9 +143,10 @@ function infoCliente() {
     var uId = localStorage.getItem("user_id");
 
     var nome = $("#nome").val();
-    var telefone = $("#telefone");
+    var telefone = $("#telefone").val();
     var endereco = $("#endereco").val();
     var cep = $("#cep").val();
+    var raio = $("#raio").val();
     var email = localStorage.getItem("user_email");
 
     var client = {
@@ -134,14 +154,16 @@ function infoCliente() {
       telefone: telefone,
       endereco: endereco,
       cep: cep,
-      email: email
+      email: email,
+      raio: raio,
     };
   
     firebase.database().ref("cliente/"+uId).set(client)
     .then(function(result){
-  
+        localStorage.setItem("user_raio", raio);
       alert("Cadastrado com Sucesso!");
       $('#ModalCliente').modal('hide');
+        location.reload();
   
     })
     .catch(function(error){

@@ -6,6 +6,7 @@ jQuery(document).ready(function(e) {
         lat = position.coords.latitude;
         long = position.coords.longitude;
     });
+    obternomeCliente();
 });
 
 
@@ -16,7 +17,7 @@ function exibirTodosProdutos() {
         .on("value", function (lojas) {
             lojas.forEach(function (loja){
                var distancia = getKilometros(lat,long,loja.val().lat,loja.val().long);
-               if(distancia <= 20) {
+               if(distancia <= localStorage.getItem("user_raio")) {
 
                    html0 += "<div class=\"list-group-item\">" +
                        "<button type=\"button\" class=\"btn btn-link\" id=\"loja\" onclick=\"filtraLoja('" + loja.val().nome + "')\">" + loja.val().nome + "</button>" +

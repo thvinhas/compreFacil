@@ -18,11 +18,14 @@
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
     <link href="css/chat.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
 
     <script src="vendor/js/session.js"></script>
     <script>
         window.onload = function(){
             sessao();
+            obternomeCliente();
         }
     </script>
 
@@ -31,27 +34,39 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
+    <a class="navbar-brand" href="compra.html" id="logo"><img src="image/logo.png">Compre Fácil</a>
     <div class="container">
-        <a class="navbar-brand" href="compra.html">Compre Fácil</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <!-- <li class="nav-item active">
-                  <a class="nav-link" href="#">Home
-                    <span class="sr-only">(current)</span>
-                  </a>-->
+                   <a class="nav-link" href="#">Home
+                     <span class="sr-only">(current)</span>
+                   </a>
+                 </li>-->
+                <li class="nav-item dropdown">
+                    <a class="btn btn-link navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user fa-2x"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div id="user">
+                            <i class="fas fa-user-circle fa-2x"></i>
+                            <p id="nome-user"></p>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <button type="button" onclick="obterCliente()" class="btn btn-link minha-conta" data-toggle="modal" data-target="#ModalCliente">Minha Conta</button>
+
+                        <button type="button" class="btn btn-link sair" onclick="logoff()">Sair</button>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <button type="button" onclick="obterCliente()" class="btn btn-link" data-toggle="modal" data-target="#ModalCliente">Informações Pessoais</button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-link" onclick="location.href='carrinhoCompra.html'">Minhas Compras</button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-link" onclick="logoff()">Sair</button>
+                    <button type="button" class="btn btn-link navbar" onclick="location.href='chat.html'"><i class="fas fa-comments  fa-2x"></i></button>
                 </li>
             </ul>
         </div>
@@ -61,7 +76,7 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="row">
+    <div class="row mt-4">
 
         <div class="col-lg-3 people-list mt-4">
 
