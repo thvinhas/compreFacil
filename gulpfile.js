@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var pkg = require('./package.json');
-
+//testecommit
 // Copy third party libraries from /node_modules into /vendor
 gulp.task('vendor', function() {
 
